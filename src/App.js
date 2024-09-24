@@ -1,28 +1,34 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+// Extensões react
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+
+// Rotas
 import Home from "./components/pages/Home";
 import Company from "./components/pages/Company";
 import Contact from "./components/pages/Contact";
 import NewProject from "./components/pages/NewProject";
+import Projects from "./components/pages/Projects";
+
+// Layouts
 import Container from "./components/layouts/Container";
+import NavBar from "./components/layouts/NavBar";
+import Footer from "./components/layouts/Footer";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Link to={'/'}>Home</Link>
-        <Link to={'/company'}>Company</Link>
-        <Link to={'/contact'}>Contato</Link>
-        <Link to={'/newproject'}>New Project</Link>
-      </div>
+      <NavBar />
+
       <Container customClass='minHeight'>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/company" element={<Company />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/newproject" element={<NewProject />} />
+          <Route exact path="/projects" element={<Projects />} />
         </Routes>
       </Container>
-      <p>Footer</p>
+
+      <Footer />
     </Router>
   );
 }
