@@ -1,0 +1,11 @@
+.projectContainer {
+    padding: 2em;
+    overflow-x: hidden;
+}
+
+.titleContainer {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
