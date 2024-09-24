@@ -1,4 +1,4 @@
-// Componets
+// Components
 import LinkButton from '../layouts/LinkButton';
 
 // Css e imagens
