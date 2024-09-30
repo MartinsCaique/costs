@@ -1,20 +1,20 @@
 {
   "projects": [
     {
-      "id": "7327",
-      "name": "Projeto Atualizado",
-      "budget": "23000",
+      "id": "cdbf",
+      "name": "Meu novo projeto",
+      "budget": "30000",
       "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
+        "id": "4",
+        "name": "Planejamento"
       },
-      "cost": 100,
+      "cost": 2000,
       "services": [
         {
           "name": "Meu novo serviço",
-          "cost": "100",
-          "description": "Bom",
-          "id": "f169169a-87ae-4ed8-8352-85feb784d1a5"
+          "cost": "2000",
+          "description": "Contratação de um scrum master",
+          "id": "0ac3c45d-3fd6-424b-828a-4774caff0fb3"
         }
       ]
     }
