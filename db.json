@@ -8,15 +8,8 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 2000,
-      "services": [
-        {
-          "name": "Meu novo serviço",
-          "cost": "2000",
-          "description": "Contratação de um scrum master",
-          "id": "0ac3c45d-3fd6-424b-828a-4774caff0fb3"
-        }
-      ]
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [
