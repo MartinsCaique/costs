@@ -1,12 +1,14 @@
 // Extensões react
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { parse, v4 as uuidv4 } from 'uuid';
 
 // Components
 import Loading from '../layouts/Loading'
 import Container from '../layouts/Container'
 import ProjectForm from '../project/ProjectForm';
 import Message from '../layouts/Message'
+import ServiceForm from '../services/ServiceForm';
 
 // Css
 import styles from './Project.module.css'
@@ -52,7 +54,7 @@ function Project() {
         if (project.budget < project.cost) {
             setMessage('O orçamento não pode ser menor que o custo do projeto!')
             setType('error')
-            setTimeout(() => { setMessage(''); }, 3000);
+            setTimeout(() => { setMessage(''); }, 3000)
             return false
         }
 
@@ -70,6 +72,44 @@ function Project() {
                 setType('success')
             })
             .catch((err) => console.log(err))
+    }
+
+    function createService(project) {
+        setMessage('')
+
+        // Last Service
+        const lastService = project.services[project.services.length - 1]
+
+        lastService.id = uuidv4()
+
+        const lastServiceCost = lastService.cost
+        const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
+        // Maximum value validation
+        if (newCost > parseFloat(project.budget)) {
+            setMessage('Orçamento ultrapassado, verifique o valor do serviço')
+            setType('error')
+            project.services.pop()
+            setTimeout(() => { setMessage(''); }, 3000);
+            return false
+        }
+
+        // Add service cost to project total cost
+        project.cost = newCost
+
+        // Update project
+        fetch(`http://localhost:5000/projects/${project.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(project)
+        }).then((resp) => resp.json())
+        .then((data) =>{
+            // Exibir os serviços
+            console.log(data)
+        })
+        .catch((err) => console.log(err))
     }
 
     return <>
@@ -107,9 +147,7 @@ function Project() {
                         </button>
                         <div className={styles.projectInfo}>
                             {showServiceForm && (
-                                <div>
-                                    Formuláriodo serviço
-                                </div>
+                                <ServiceForm handleSubmit={createService} btnText='Adicionar serviço' projectData={project} />
                             )}
                         </div>
                     </div>

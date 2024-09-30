@@ -8,8 +8,15 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 0,
-      "services": []
+      "cost": 100,
+      "services": [
+        {
+          "name": "Meu novo serviço",
+          "cost": "100",
+          "description": "Bom",
+          "id": "f169169a-87ae-4ed8-8352-85feb784d1a5"
+        }
+      ]
     }
   ],
   "categories": [
